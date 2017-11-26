@@ -1,0 +1,44 @@
+{**
+ * @param string   $basePath web base path
+ * @param array    $flashes  flash messages
+ *}
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+
+<!-- 
+	___________________________________________________________________________________________________________
+	                     _           _   _                                   _      __ _                     _
+	  ___ _ __ ___  __ _| |_ ___  __| | | |__  _   _    /\/\   __ _ _ __ ___| | __ / _\ | _____  _ __   __ _| |
+	 / __| '__/ _ \/ _` | __/ _ \/ _` | | '_ \| | | |  /    \ / _` | '__/ _ \ |/ / \ \| |/ / _ \| '_ \ / _` | |
+	| (__| | |  __/ (_| | ||  __/ (_| | | |_) | |_| | / /\/\ \ (_| | | |  __/   <  _\ \   < (_) | |_) | (_| | |
+	 \___|_|  \___|\__,_|\__\___|\__,_| |_.__/ \__, | \/    \/\__,_|_|  \___|_|\_\ \__/_|\_\___/| .__/ \__,_|_|
+	                                           |___/                                            |_|
+	___________________________________________________________________________________________________________
+
+-->
+
+	<title>{ifset title}{include title|stripHtml} | {/ifset}Demoforum</title>
+
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="{$basePath}/css/styles.min.css">
+	{block head}{/block}
+</head>
+
+<body id="layout-login">
+	<div n:foreach="$flashes as $flash" n:class="flash, $flash->type">{$flash->message}</div>
+
+	<section id="main">
+		<div class="background-wrap">
+			{include content}
+		</div>
+	</section>
+
+	{block scripts}
+	<script src="{$basePath}/js/vendor.js"></script>
+	<script src="https://nette.github.io/resources/js/netteForms.min.js"></script>
+	<script src="{$basePath}/js/main.js"></script>
+	{/block}
+</body>
+</html>

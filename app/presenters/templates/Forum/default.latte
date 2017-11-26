@@ -1,0 +1,41 @@
+{block content}
+
+<div id="content">
+	<div class="comment-form">
+		{control commentForm}
+	</div>
+
+	{snippet comments}
+		<div class="comments">
+			{foreach $comments as $comment}
+				<div class="comment">
+					<div class="comment-header">
+						<span class="title">{$comment->getTitle()}</span>
+						<span class="name">{$comment->getUser()->getUsername()}</span>
+						<span class="datetime"><time datetime="{$comment->getCreationDate()|date:'c'}">{$comment->getCreationDate()|date:'j. n. Y H:i'}</span>
+					</div>
+					<div class="comment-message">
+						{$comment->getMessage()}
+					</div>
+					<div class="responses">
+						{foreach $comment->getResponses() as $response}
+							<div class="response">
+								<div class="response-header">
+									<span class="name">{$response->getUser()->getUsername()}</span>
+									<span class="datetime"><time datetime="{$response->getCreationDate()|date:'c'}">{$response->getCreationDate()|date:'j. n. Y H:i'}</span>
+								</div>
+								<div class="response-message">
+									{$response->getMessage()}
+								</div>
+							</div>
+						{/foreach}
+					</div>
+					<div class="add-response-form">
+						{control responseForm-{$comment->getId()}}
+					</div>
+				</div>
+			{/foreach}
+		</div>
+	{/snippet}
+</div>
+{/block}

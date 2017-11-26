@@ -1,0 +1,18 @@
+{
+  "name": "demoforum",
+  "description": "",
+  "main": "",
+  "license": "MIT",
+  "homepage": "",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "nette.ajax": "https://github.com/vojtech-dobes/nette.ajax.js.git"
+  }
+}

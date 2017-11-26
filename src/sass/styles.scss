@@ -1,0 +1,137 @@
+@import "variables";
+@import "../../vendor/twbs/bootstrap/scss/bootstrap";
+//@import "../../components/font-awesome/scss/font-awesome";
+
+/**-----------------------------------*\
+    OBECNÉ
+\*------------------------------------*/
+h1 {
+    text-align: center;
+}
+
+/**-----------------------------------*\
+    KOMENTÁŘE
+\*------------------------------------*/
+
+.comment-form {
+    margin-top: 30px;
+}
+
+.comments {
+    margin-top: 75px;
+
+    .comment-header,
+    .response-header {
+        .title {
+            font-weight: bold;
+            margin-right: 2rem;
+        }
+        .name {
+            margin-right: 2rem;
+        }
+        .datetime {
+            font-size: 0.85em;
+            color: lighten($text-color, 30%)
+        }
+    }
+
+    .comment {
+        margin-bottom: 30px;
+        padding: 10px 15px;
+        background-color: #fefefe;
+
+        .responses {
+            padding-top: 32px;
+            padding-left: $comments-tree-padding;
+        }
+    }
+
+    .response {
+        .response-header {
+            position: relative;
+
+            &:before {
+                content: '';
+                display: block;
+                position: absolute;
+                bottom: 0px;
+                left: -($comments-tree-padding - 1);
+                width: 0;
+                height: calc(100% + 16px);
+                border-left: 1px $comments-tree-color solid;
+            }
+
+            &:after {
+                content: '';
+                display: block;
+                position: absolute;
+                top: 12px;
+                left: -($comments-tree-padding - 1);
+                width: $comments-tree-padding - 25px;
+                height: 0;
+                border-top: 1px $comments-tree-color solid;
+            }
+        }
+
+        .response-message {
+            position: relative;
+            padding-top: 10px;
+            padding-bottom: 25px;
+
+            &:before {
+                content: '';
+                display: block;
+                position: absolute;
+                height: 100%;
+                width: 0;
+                border-left: 1px $comments-tree-color solid;
+                top: 0;
+                left: -($comments-tree-padding - 1);
+            }
+        }
+
+        &:last-of-type {
+            .response-header {
+                &:before {
+                    bottom: 11px;
+                    height: 29px;
+                }
+            }
+            
+            .response-message {
+                &:before {
+                    display: none;
+                }
+            }
+        }
+    }
+
+}
+
+
+/**-----------------------------------*\
+    LOGIN
+\*------------------------------------*/
+#layout-login {
+    position: relative;
+
+    .background-wrap {
+        min-height: 100vh;
+        width: 100vw;
+        background-image: url(#{$image-path}/background.jpg);
+        background-size: cover;
+    }
+
+    .sign-in-form,
+    .sign-up-form {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background-color: #fff;
+        min-width: 300px;
+        max-width: 100%;
+        padding: 15px;
+    }
+}
+
